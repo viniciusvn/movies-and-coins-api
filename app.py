@@ -1,12 +1,14 @@
+import os
 from flask import Flask, jsonify, request
 from flask_mongoengine import MongoEngine
 from bson.objectid import ObjectId
 import requests
 
 
+
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb+srv://viniciusvn:Spphqk12@owlhouse.nbmdy.mongodb.net/movies'
+    'host': os.environ.get('DATABASE_URL')
 }
 
 db = MongoEngine()
